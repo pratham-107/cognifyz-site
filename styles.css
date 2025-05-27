@@ -1,0 +1,428 @@
+/* ============ Global Variables ============ */
+:root {
+  --cyber-blue: #00f3ff;
+  --cyber-green: #00ff85;
+  --cyber-orange: #ff9100;
+  --cyber-purple: #b34eff;
+  --dark-bg: #0a0a0f;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --text-light: #f0f0f0;
+  --text-dark: #111;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+}
+
+/* ============ Background Effects ============ */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #000010, #000020 70%, #000030);
+  z-index: -3;
+}
+
+.particles,
+.geometric-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  background-image: repeating-radial-gradient(
+      circle at center,
+      var(--cyber-blue),
+      var(--cyber-blue) 1px,
+      transparent 2px,
+      transparent 10px
+    ),
+    repeating-radial-gradient(
+      circle at center,
+      var(--cyber-green),
+      var(--cyber-green) 1px,
+      transparent 2px,
+      transparent 10px
+    );
+  opacity: 0.05;
+  animation: moveBG 60s linear infinite;
+}
+
+@keyframes moveBG {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============ Navigation Dots ============ */
+.nav-futuristic {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--cyber-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.5;
+}
+
+.nav-dot.active {
+  background-color: var(--cyber-green);
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+/* ============ Hero Section ============ */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  position: relative;
+}
+
+.company-logo-3d {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  transform-style: preserve-3d;
+  animation: spinLogo 10s linear infinite;
+}
+
+.logo-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--cyber-green);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--cyber-blue);
+  border-radius: 10px;
+}
+
+.logo-face.front {
+  transform: translateZ(60px);
+}
+.logo-face.back {
+  transform: rotateY(180deg) translateZ(60px);
+}
+.logo-face.right {
+  transform: rotateY(90deg) translateZ(60px);
+}
+.logo-face.left {
+  transform: rotateY(-90deg) translateZ(60px);
+}
+.logo-face.top {
+  transform: rotateX(90deg) translateZ(60px);
+}
+.logo-face.bottom {
+  transform: rotateX(-90deg) translateZ(60px);
+}
+
+@keyframes spinLogo {
+  from {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+.glitch-text {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--cyber-blue);
+  position: relative;
+  animation: glitch 1.5s infinite;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--cyber-green);
+  margin-bottom: 1.5rem;
+}
+
+.cyber-btn {
+  background: transparent;
+  border: 2px solid var(--cyber-blue);
+  color: var(--cyber-blue);
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.cyber-btn:hover {
+  background: var(--cyber-blue);
+  color: #000;
+  box-shadow: 0 0 15px var(--cyber-blue);
+}
+
+/* ============ Cards & Sections ============ */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.gradient-heading {
+  background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-blue {
+  color: var(--cyber-blue);
+}
+.icon-green {
+  color: var(--cyber-green);
+}
+.icon-orange {
+  color: var(--cyber-orange);
+}
+
+.heading-blue {
+  color: var(--cyber-blue);
+}
+.heading-green {
+  color: var(--cyber-green);
+}
+.heading-orange {
+  color: var(--cyber-orange);
+}
+.heading-purple {
+  color: var(--cyber-purple);
+}
+
+/* ============ Contact Form ============ */
+.cyber-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group-enhanced {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control-cyber {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--cyber-blue);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-label-floating {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: var(--cyber-blue);
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+.form-control-cyber:focus,
+.form-control-cyber:not(:placeholder-shown) {
+  border-color: var(--cyber-green);
+}
+
+.form-control-cyber:focus + .form-label-floating,
+.form-control-cyber:not(:placeholder-shown) + .form-label-floating {
+  top: -10px;
+  font-size: 0.8rem;
+  color: var(--cyber-green);
+}
+
+.error-message {
+  font-size: 0.85rem;
+}
+
+.success-message {
+  color: var(--cyber-green);
+  font-weight: bold;
+}
+
+.success-pulse {
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* ============ API Data Container ============ */
+.cyber-loading {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--cyber-green);
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.holo-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  border: 1px solid var(--cyber-blue);
+  box-shadow: 0 0 10px var(--cyber-blue);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============ Footer ============ */
+.footer-cyber {
+  background: var(--dark-bg);
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 0.5rem;
+  color: var(--cyber-blue);
+  border: 1px solid var(--cyber-blue);
+  border-radius: 50%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--cyber-blue);
+  color: #000;
+  box-shadow: 0 0 10px var(--cyber-blue);
+}
+
+/* ============ Animations ============ */
+@keyframes glitch {
+  0% {
+    text-shadow: 1px 1px 0 var(--cyber-green), -1px -1px 0 var(--cyber-blue);
+  }
+  20% {
+    text-shadow: -2px -2px 0 var(--cyber-green), 2px 2px 0 var(--cyber-blue);
+  }
+  40% {
+    text-shadow: 2px 2px 0 var(--cyber-green), -2px -2px 0 var(--cyber-blue);
+  }
+  60% {
+    text-shadow: -1px 1px 0 var(--cyber-green), 1px -1px 0 var(--cyber-blue);
+  }
+  80% {
+    text-shadow: 1px -1px 0 var(--cyber-green), -1px 1px 0 var(--cyber-blue);
+  }
+  100% {
+    text-shadow: 1px 1px 0 var(--cyber-green), -1px -1px 0 var(--cyber-blue);
+  }
+}
+
+/* ============ Fade-In Scroll Animation ============ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ Responsive Adjustments ============ */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .nav-futuristic {
+    right: 10px;
+    top: 10px;
+    transform: translateY(0);
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .company-logo-3d {
+    width: 80px;
+    height: 80px;
+  }
+}
